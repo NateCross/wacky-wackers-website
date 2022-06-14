@@ -1,3 +1,36 @@
+# Wacky Wackers Website
+
+This is a website made for educational purposes based on a fictional ice cream
+company in a tabletop role-playing game. It is not intended to actually sell
+products.
+
+## Tech Stack
+
+- Typescript
+- React
+- MongoDB
+- Express (?)
+- Netlify (Host)
+
+## TODO
+
+- [ ] Setup MongoDB database
+  - [ ] Test a few queries
+  - [ ] Add a proper menu
+- [ ] Frontend
+  - [ ] Home page
+    - [ ] Carousel of items
+      - [ ] "Now hiring" with Majima Construction-esque poster
+    - [ ] Big banner with latest product
+  - [ ] Shopping cart
+    - [ ] Allow user to input address for delivery and payment details
+  - [ ] Contact Us
+    - [ ] Suggestions for future orders that get emailed
+  - [ ] Special menu
+    - [ ] Allow user to input address... and sign a waiver
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
