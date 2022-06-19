@@ -14,3 +14,8 @@ PORT=5000
 ```
 
 - `npm start` to run the server.
+
+# Commands
+
+- Get all products: `curl localhost:5000/products`
+- POST: `curl -X POST -H "Content-Type: application/json" -d '{"name": "Pistachio", "price": 100.12345}' localhost:5000/products/add`
