@@ -3,6 +3,7 @@ import express from "express";
 import cors from "cors";
 import "dotenv/config";
 import routeRecord from "./routes/products.js";
+import routeCarousel from "./routes/carousel.js";
 import dbConn from "./db/conn.js";
 
 
@@ -13,6 +14,7 @@ const port = process.env?.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 app.use(routeRecord);
+app.use(routeCarousel);
 
 app.listen(port, () => {
 

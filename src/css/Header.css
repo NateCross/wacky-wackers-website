@@ -1,4 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Potta+One&display=swap');
+
+:root {
+  --color-primary: #2ABBEC !important;
+  --color-primary-dark: #010A4B !important;
+  --color-primary-light: #BAEFEE !important;
+
+  --logo-height: 319px;
+  --logo-width: 741px;
+}
+
+.logo {
+  height: calc(var(--logo-height) / 3);
+  width: calc(var(--logo-width) / 3);
+  background-image: url('../imgs/wacky-wackers-logo-full.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.logo:hover {
+  background-image: url('../imgs/wacky-wackers-logo-full-glow.png');
+}
+
 header {
+  font-family: 'Potta One', cursive;
+  color: white;
 }
 
 header ul {
@@ -8,4 +34,47 @@ header ul {
 header a {
   text-decoration: none;
   color: inherit;
+}
+
+.nav-hamburger {
+}
+
+/* MEDIA QUERIES */
+/* Breakpoints from here: https://stackoverflow.com/a/24664378 */
+@media only screen and (min-width: 320px) and (max-width: 479px) {
+
+}
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+}
+
+@media only screen and (min-width: 992px) {
+  .nav-hamburger {
+    display: none;
+  }
+
+  header {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    position: relative;
+    top: 0;
+
+    margin-top: 2rem;
+  }
+
+  header ul {
+    display: flex;
+    gap: 2rem;
+    margin: 2rem;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+  }
 }

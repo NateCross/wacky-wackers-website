@@ -1,13 +1,30 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import {
+  Route,
+  Routes,
+  Link,
+  BrowserRouter,
+} from "react-router-dom";
 
-import Header from "./Header";
+import './css/App.css'
+
+import Header from "./views/Header";
+
+import Home from './views/Home';
+import Product from './views/Product';
 
 class App extends Component {
   render() {
     return (
       <>
-        <Header/>
+        <Header />
+
+        <div id="content">
+          <Routes>
+            <Route path="/" element={<Home />}/>
+            <Route path="/products" element={<Product />}/>
+          </Routes>
+        </div>
       </>
     )
   }
