@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
 
+import '../css/Home.css'
+
 import Carousel from "../components/Home/Carousel"
 
 class Home extends Component {
   render () {
     return (
-      <div>
+      <div className="page-home">
         {
           <Carousel />
-          // Carousel
           // Product showcase
           // News
           // Product Showcase
