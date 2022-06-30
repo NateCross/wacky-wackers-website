@@ -16,15 +16,35 @@
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
+  background-color: black;
+
+  transition: background-image 0.5s ease-in;
 }
 
-.logo:hover {
-  background-image: url('../imgs/wacky-wackers-logo-full-glow.png');
+.logo:after {
+  background: url('../imgs/wacky-wackers-logo-full-glow.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: inherit;
+  height: inherit;
+  content: "";
+
+  opacity: 0;
+
+  transition: opacity 0.25s ease-in-out;
+}
+
+.logo:hover:after {
+  opacity: 1;
 }
 
 header {
   font-family: 'Potta One', cursive;
   color: white;
+  background-color: #38b6ff;
 }
 
 header ul {
@@ -64,8 +84,6 @@ header a {
     justify-content: space-between;
     position: relative;
     top: 0;
-
-    margin-top: 2rem;
   }
 
   header ul {

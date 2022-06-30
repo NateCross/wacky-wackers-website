@@ -1,13 +1,14 @@
 import React, { Component, MouseEventHandler, ReactElement } from 'react'
 
-import { FontAwesomeIcon, Props } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon, } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 
 const maxCarouselItems = 5;
 const CarouselDbURL = 'http://localhost:5000/carousel/';
 
 interface CarouselType {
-  activeItem: number,
+  currentActiveItem: number,
+  prevActiveItem?: number,
   maxCarouselItems: number,
   items?: CarouselItemType[],
 }
@@ -19,6 +20,7 @@ interface CarouselItemType {
   image?: string,
   imageLink?: string,
   isActive: boolean,
+  isPrevActive: boolean,
 }
 
 interface CarouselCircleType {
@@ -31,15 +33,24 @@ function CarouselItem({
   description,
   image,
   isActive,
+  isPrevActive,
   }: CarouselItemType): ReactElement {
-  const carouselIsActiveClass = `carousel-item ${isActive ? 'carousel-item-active' : ''}`;
+  let carouselClasses = `carousel-item `;
+  let imageClasses = 'carousel-item-image ';
+  if (isActive)
+    carouselClasses += 'carousel-item-active ';
+  if (isPrevActive) {
+    carouselClasses += 'carousel-image-animation-prev ';
+  }
   return (
-    <li className={carouselIsActiveClass}>
+    <li className={carouselClasses}>
+      <div className="carousel-image-container">
+        <img className={imageClasses} src={image} alt={title} />
+      </div>
       <div className='carousel-item-text'>
         <h3 className="carousel-item-title">{title}</h3>
         <p className="carousel-item-description">{description}</p>
       </div>
-      <img className='carousel-item-image' src={image} alt={`${title} Image`} />
     </li>
   );
 }
@@ -57,8 +68,8 @@ class Carousel extends Component<{}, CarouselType> {
   constructor(props: CarouselType) {
     super(props);
     this.state = {
-      activeItem: 0,
-      maxCarouselItems: maxCarouselItems,
+      currentActiveItem: 0,
+      maxCarouselItems,
       items: [],
     };
   }
@@ -84,39 +95,42 @@ class Carousel extends Component<{}, CarouselType> {
   }
 
   handleGoLeft() {
-    const { activeItem } = this.state;
+    const { currentActiveItem: activeItem } = this.state;
     const newActiveItemIndex = (
       activeItem === 0 ? maxCarouselItems - 1 : activeItem - 1
     );
 
     this.setState({
       ...this.state,
-      activeItem: newActiveItemIndex,
+      currentActiveItem: newActiveItemIndex,
+      prevActiveItem: activeItem,
     });
   }
 
   handleGoRight() {
-    const { activeItem } = this.state;
+    const { currentActiveItem: activeItem } = this.state;
     const newActiveItemIndex = (
       activeItem === maxCarouselItems - 1 ? 0 : activeItem + 1
     );
     this.setState({
       ...this.state,
-      activeItem: newActiveItemIndex,
+      currentActiveItem: newActiveItemIndex,
+      prevActiveItem: activeItem,
     });
   }
 
   handleNavCircleClick(index: number): MouseEventHandler {
-    return () => {
+    return() => {
       this.setState({
-        activeItem: index,
+        currentActiveItem: index,
+        prevActiveItem: this.state.currentActiveItem,
       });
     }
   }
 
   createCarouselCircles(): ReactElement[] {
     const carouselCircles: ReactElement[] = [];
-    const { activeItem } = this.state;
+    const { currentActiveItem: activeItem } = this.state;
 
     for (let i = 0; i < maxCarouselItems; i++) {
       carouselCircles.push(
@@ -131,8 +145,8 @@ class Carousel extends Component<{}, CarouselType> {
     return carouselCircles;
   }
 
-  render () {
-    const { activeItem } = this.state;
+  render() {
+    const { currentActiveItem, prevActiveItem } = this.state;
 
     return (
       <div className='carousel'>
@@ -145,7 +159,8 @@ class Carousel extends Component<{}, CarouselType> {
                   description={description}
                   image={image}
                   key={index}
-                  isActive={index === activeItem ? true : false}
+                  isActive={index === currentActiveItem ? true : false}
+                  isPrevActive={index === prevActiveItem ? true : false}
                 />
               );
             })
