@@ -34,6 +34,7 @@ function CarouselItem({
   image,
   isActive,
   isPrevActive,
+  imageLink = '#',
   }: CarouselItemType): ReactElement {
   let carouselClasses = `carousel-item `;
   let imageClasses = 'carousel-item-image ';
@@ -44,9 +45,9 @@ function CarouselItem({
   }
   return (
     <li className={carouselClasses}>
-      <div className="carousel-image-container">
+      <a href={imageLink} className="carousel-image-container">
         <img className={imageClasses} src={image} alt={title} />
-      </div>
+      </a>
       <div className='carousel-item-text'>
         <h3 className="carousel-item-title">{title}</h3>
         <p className="carousel-item-description">{description}</p>
@@ -152,12 +153,13 @@ class Carousel extends Component<{}, CarouselType> {
       <div className='carousel'>
         <ul className="carousel-container">
           {
-            this.state.items?.map(({title, description, image}, index) => {
+            this.state.items?.map(({title, description, image, imageLink}, index) => {
               return (
                 <CarouselItem
                   title={title}
                   description={description}
                   image={image}
+                  imageLink={imageLink}
                   key={index}
                   isActive={index === currentActiveItem ? true : false}
                   isPrevActive={index === prevActiveItem ? true : false}

@@ -23,8 +23,8 @@
 
 .logo:after {
   background: url('../imgs/wacky-wackers-logo-full-glow.png');
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-size: inherit;
+  background-repeat: inherit;
   position: absolute;
   top: 0;
   left: 0;

@@ -4,6 +4,7 @@ import cors from "cors";
 import "dotenv/config";
 import routeRecord from "./routes/products.js";
 import routeCarousel from "./routes/carousel.js";
+import routeReviews from "./routes/reviews.js";
 import dbConn from "./db/conn.js";
 
 
@@ -15,9 +16,9 @@ app.use(cors());
 app.use(express.json());
 app.use(routeRecord);
 app.use(routeCarousel);
+app.use(routeReviews);
 
 app.listen(port, () => {
-
   dbConn.connectToServer((err: Function) => {
     if (err) console.error(err);
   });
