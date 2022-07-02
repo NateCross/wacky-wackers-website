@@ -212,6 +212,26 @@
 
 .reviews {
   background-color: var(--accent);
+  padding: 2rem;
+}
+
+.reviews-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  list-style: none;
+}
+
+.review-card {
+  height: 400px;
+  background-color: grey;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow:
+    6px 9px 20px black;
+  /* min-height: 400px; */
+  /* max-height: 400px; */
 }
 
 @media only screen and (max-width: 991px) {

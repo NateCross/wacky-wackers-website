@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+const ReviewsDbURL = 'http://localhost:5000/reviews/fetchRandom/3';
+
 interface ReviewType {
   userName: string,
   reviewName: string,
@@ -11,6 +13,10 @@ interface ReviewType {
 
 interface ReviewCardType {
   review: ReviewType,
+}
+
+interface ReviewComponentType {
+  reviews: ReviewType[],
 }
 
 function ReviewCard({ review }: ReviewCardType) {
@@ -35,16 +41,52 @@ function ReviewCard({ review }: ReviewCardType) {
   )
 }
 
-class Reviews extends Component {
+class Reviews extends Component<{}, ReviewComponentType> {
   constructor(props: {}) {
     super(props);
+    this.state = {
+      reviews: [],
+    }
+  }
+
+  componentDidMount() {
+    this.fetchReviews();
+  }
+
+  async fetchReviews() {
+    const response = await fetch(ReviewsDbURL);
+
+    if (!response.ok) {
+      const message = `
+        An error occurred: ${response.statusText}
+      `;
+      window.alert(message);
+      return;
+    }
+
+    const reviews = await response.json();
+    this.setState({
+      reviews,
+    });
   }
 
   render() {
+    const { reviews } = this.state;
+
     return (
       <div className="reviews">
-        <p>Hello World!</p>
-        <ReviewCard />
+        <ul className="reviews-container">
+          {
+            reviews.map((review, index) => {
+              return (
+                <ReviewCard
+                  review={review}
+                  key={index}
+                />
+              )
+            })
+          }
+        </ul>
       </div>
     );
   }
