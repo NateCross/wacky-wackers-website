@@ -4,6 +4,22 @@
   -moz-box-sizing: border-box;
 }
 
+:root {
+  /* COLORS */
+  --accent: #38b6ff !important;
+  --accent-hover: #fb55e1 !important;
+  --bgcolor: #0A0A08 !important;
+
+  --yellow: #fff45e !important;
+  --green : #aeff43 !important;
+  --baby-blue: #55fdfd !important;
+  --dark-blue: #2155cd !important;
+  --orange: #ff9443 !important;
+  --red: #ff4350 !important;
+  --magenta: #ff43ae !important;
+  --purple: #9443ff !important;
+}
+
 body {
   margin: 0;
   padding: 0;
