@@ -2,6 +2,9 @@ import React, { Component, ReactElement } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
+import { Button } from "../Buttons";
+import { Modal } from "../Modal";
+
 const ReviewsDbURL = 'http://localhost:5000/reviews/fetchRandom/3';
 
 interface ReviewType {
@@ -20,19 +23,26 @@ interface ReviewCardType {
 
 interface ReviewComponentType {
   reviews: ReviewType[],
+  modalIsVisible: boolean,
 }
 
-function getStarsFromRating(rating: number): ReactElement[] {
-  const stars: ReactElement[] = [];
-  for (let i = 1; i <= rating; i++) {
-    stars.push(
-      <FontAwesomeIcon icon={faStar} key={i} />
-    );
-  }
-  return stars;
+const ModalBody = {
+  text: "Hello World!",
+  className: "modal-review-body",
 }
+
 
 function ReviewCard({ review, index }: ReviewCardType) {
+  function getStarsFromRating(rating: number): ReactElement[] {
+    const stars: ReactElement[] = [];
+    for (let i = 1; i <= rating; i++) {
+      stars.push(
+        <FontAwesomeIcon icon={faStar} key={i} />
+      );
+    }
+    return stars;
+  }
+
   return (
     <li className="review-card" key={index}>
       <div className="review-card-header">
@@ -44,9 +54,9 @@ function ReviewCard({ review, index }: ReviewCardType) {
         <h3 className="review-card-review-name">
           {review.reviewName}
         </h3>
-        <h5 className="review-card-review-username">
+        <h4 className="review-card-review-username">
           {review.userName}
-        </h5>
+        </h4>
       </div>
       <hr />
       <div className="review-card-body">
@@ -71,7 +81,8 @@ class Reviews extends Component<{}, ReviewComponentType> {
     super(props);
     this.state = {
       reviews: [],
-    }
+      modalIsVisible: false,
+    };
   }
 
   componentDidMount() {
@@ -95,8 +106,14 @@ class Reviews extends Component<{}, ReviewComponentType> {
     });
   }
 
+  handleLeaveReviewClick = () => {
+    this.setState({
+      modalIsVisible: true,
+    });
+  }
+
   render() {
-    const { reviews } = this.state;
+    const { reviews, modalIsVisible } = this.state;
 
     return (
       <div className="reviews">
@@ -114,11 +131,16 @@ class Reviews extends Component<{}, ReviewComponentType> {
           }
         </ul>
         <div className="review-buttons">
-          <button
-            className="review-create"
-          >
-            Leave A Review
-          </button>
+          <Button
+            onClick={this.handleLeaveReviewClick}
+            text="Leave A Review"
+          />
+        </div>
+        <div className="review-modal">
+          <Modal
+            isVisible={modalIsVisible}
+            body={ModalBody}
+          />
         </div>
       </div>
     );

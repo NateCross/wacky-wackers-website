@@ -20,6 +20,66 @@
   --purple: #9443ff !important;
 }
 
+/*
+ * Buttons used throughout the app
+ * They're constructed this way to give them an angular
+ * design, reminiscent of sci-fi.
+ * It is honestly difficult to work with this kind of setup,
+ * though clip path was used to make it look this way.
+ */
+
+.button-shadow {
+  width: 15%;
+  height: 3rem;
+  filter: drop-shadow(0px 0px 20px var(--red));
+}
+
+.button-outer {
+  width: 100%;
+  height: 100%;
+
+  background-color: var(--red);
+  color: var(--red);
+
+  clip-path: polygon(10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-inner {
+    font-family: "Comfortaa", sans-serif;
+  width: 95%;
+  height: 95%;
+  cursor: pointer;
+  text-transform: uppercase;
+  position: relative;
+
+  border-width: 3px;
+  border-style: solid;
+  border-color: var(--red);
+
+  color: var(--red);
+  background-color: var(--bgcolor);
+
+  text-shadow:
+    0px 0px 5px var(--red);
+
+  transition: 0.5s ease-in-out;
+
+  clip-path: polygon(10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
+}
+
+.button-inner:hover {
+  color: var(--bgcolor);
+  background-color: var(--red);
+
+  text-shadow:
+    0px 0px 5px var(--bgcolor);
+
+}
+
 body {
   margin: 0;
   padding: 0;

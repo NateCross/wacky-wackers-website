@@ -285,40 +285,6 @@
   justify-content: center;
 }
 
-.review-create {
-  font-family: "Comfortaa", sans-serif;
-  width: 15%;
-  height: 3rem;
-  cursor: pointer;
-  text-transform: uppercase;
-  position: relative;
-
-  border-width: 3px;
-  border-style: solid;
-  border-color: var(--red);
-
-  color: var(--red);
-  background-color: var(--bgcolor);
-
-  text-shadow:
-    0px 0px 5px var(--red);
-  box-shadow:
-    0px 0px 30px var(--red);
-
-  transition: 0.5s ease-in-out;
-
-  clip-path: polygon(10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
-}
-
-.review-create:hover {
-  color: var(--bgcolor);
-  background-color: var(--red);
-  /* border-color: var(--bgcolor); */
-
-  text-shadow:
-    0px 0px 5px var(--bgcolor);
-}
-
 @media only screen and (max-width: 991px) {
   .carousel-image-container {
   }
