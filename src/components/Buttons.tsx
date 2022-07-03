@@ -11,6 +11,16 @@ interface ButtonType {
   onClick: MouseEventHandler,
 }
 
+interface FormButtonType {
+  text?: string,
+  type: string,
+  value?: string,
+  innerClassName?: string,
+  outerClassName?: string,
+  glowClassName?: string,
+  onClick?: MouseEventHandler,
+}
+
 export const Button = ({
   text,
   innerClassName = "",
@@ -31,6 +41,34 @@ export const Button = ({
         >
           {text}
         </button>
+      </div>
+    </div>
+  )
+};
+
+export const FormButton = ({
+  text,
+  innerClassName = "",
+  outerClassName = "",
+  glowClassName = "",
+  onClick = () => {},
+  type,
+  value = "",
+}: FormButtonType) => {
+  const shadowName = `button-shadow ${glowClassName}`;
+  const outerName = `button-outer ${outerClassName}`;
+  const innerName = `button-inner ${innerClassName}`;
+
+  return (
+    <div className={shadowName}>
+      <div className={outerName}>
+        <input
+          type={type}
+          value={value}
+          className={innerName}
+          onClick={onClick}
+        >
+        </input>
       </div>
     </div>
   )

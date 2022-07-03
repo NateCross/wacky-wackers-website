@@ -1,8 +1,8 @@
-import React, { Component, ReactElement } from 'react'
+import React, { Component, FormEvent, FormEventHandler, ReactElement } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
-import { Button } from "../Buttons";
+import { Button, FormButton } from "../Buttons";
 import { Modal } from "../Modal";
 
 const ReviewsDbURL = 'http://localhost:5000/reviews/fetchRandom/3';
@@ -26,8 +26,13 @@ interface ReviewComponentType {
   modalIsVisible: boolean,
 }
 
+const ModalHeader = {
+  text: "Leave A Review",
+  className: "modal-review-header",
+}
+
 const ModalBody = {
-  text: "Hello World!",
+  text: "",
   className: "modal-review-body",
 }
 
@@ -112,6 +117,18 @@ class Reviews extends Component<{}, ReviewComponentType> {
     });
   }
 
+  handleModalClose = () => {
+    this.setState({
+      modalIsVisible: false,
+    });
+  }
+
+  handleSubmitReview = (event: FormEvent) => {
+    // TODO: Make review form
+    event.preventDefault();
+    console.log("Review submitted");
+  }
+
   render() {
     const { reviews, modalIsVisible } = this.state;
 
@@ -139,8 +156,26 @@ class Reviews extends Component<{}, ReviewComponentType> {
         <div className="review-modal">
           <Modal
             isVisible={modalIsVisible}
+            header={ModalHeader}
             body={ModalBody}
-          />
+            onClose={this.handleModalClose}
+            containerClassName="modal-review-container"
+          >
+            <form onSubmit={this.handleSubmitReview}>
+              { /* TODO: Move this into its own component */ }
+              <div className="modal-review-buttons">
+                <FormButton
+                  type="submit"
+                  value="Submit Review"
+                />
+                <Button
+                  onClick={this.handleModalClose}
+                  text="Cancel"
+                />
+              </div>
+            </form>
+
+          </Modal>
         </div>
       </div>
     );

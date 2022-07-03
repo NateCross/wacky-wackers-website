@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Comfortaa&display=swap');
+
 * {
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -20,6 +22,14 @@
   --purple: #9443ff !important;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+
+  background-color: #0A0A08;
+  font-family: "Comfortaa", sans-serif;
+}
+
 /*
  * Buttons used throughout the app
  * They're constructed this way to give them an angular
@@ -29,7 +39,7 @@
  */
 
 .button-shadow {
-  width: 15%;
+  width: 10rem;
   height: 3rem;
   filter: drop-shadow(0px 0px 20px var(--red));
 }
@@ -80,10 +90,51 @@
 
 }
 
-body {
-  margin: 0;
-  padding: 0;
+/* MODALS */
 
-  background-color: #0A0A08;
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, .7);
+  z-index: 100;
 }
 
+.modal-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  /* padding: 75%; */
+  width: 75vw;
+  height: 33vh;
+  z-index: 100;
+
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.fa-xmark {
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.modal-container hr {
+  margin-left: inherit;
+  margin-right: inherit;
+  margin-bottom: 1.5rem;
+}
