@@ -31,4 +31,22 @@ reviewRoutes.route("/reviews/fetchRandom/:randomCount").get((req, res) => {
     });
 });
 
+reviewRoutes.route("/reviews/add").post((req, response) => {
+  let db = dbConn.getDb();
+
+  const review = {
+    userName: req.body.userName,
+    reviewName: req.body.reviewName,
+    text: req.body.text,
+    address: req.body.address,
+    mail: req.body.mail,
+    rating: req.body.rating,
+  };
+
+  db.collection("reviews").insertOne(review, (err, res) => {
+    if (err) throw err;
+    response.json(res);
+  });
+});
+
 export default reviewRoutes;
