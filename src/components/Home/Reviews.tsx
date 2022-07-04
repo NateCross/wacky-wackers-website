@@ -1,4 +1,4 @@
-import React, { Component, FormEvent, FormEventHandler, ReactElement } from 'react'
+import React, { Component, FormEvent, FormEventHandler, MouseEventHandler, ReactElement } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
@@ -26,6 +26,11 @@ interface ReviewComponentType {
   modalIsVisible: boolean,
 }
 
+interface ReviewFormType {
+  onClose: MouseEventHandler,
+  onSubmit: FormEventHandler,
+}
+
 const ModalHeader = {
   text: "Leave A Review",
   className: "modal-review-header",
@@ -34,6 +39,24 @@ const ModalHeader = {
 const ModalBody = {
   text: "",
   className: "modal-review-body",
+}
+
+function ReviewForm({ onSubmit, onClose }: ReviewFormType) {
+  return (
+    <form onSubmit={onSubmit}>
+      <div className="modal-review-buttons">
+        <FormButton
+          type="submit"
+          value="Submit Review"
+        />
+        <Button
+          onClick={onClose}
+          text="Cancel"
+        />
+      </div>
+    </form>
+
+  );
 }
 
 
@@ -123,9 +146,9 @@ class Reviews extends Component<{}, ReviewComponentType> {
     });
   }
 
-  handleSubmitReview = (event: FormEvent) => {
+  handleSubmitReview = (e: FormEvent) => {
     // TODO: Make review form
-    event.preventDefault();
+    e.preventDefault();
     console.log("Review submitted");
   }
 
@@ -136,6 +159,7 @@ class Reviews extends Component<{}, ReviewComponentType> {
       <div className="reviews">
         <ul className="reviews-container">
           {
+            /* TODO: Move this into own function/component */
             reviews.map((review, index) => {
               return (
                 <ReviewCard
@@ -161,20 +185,10 @@ class Reviews extends Component<{}, ReviewComponentType> {
             onClose={this.handleModalClose}
             containerClassName="modal-review-container"
           >
-            <form onSubmit={this.handleSubmitReview}>
-              { /* TODO: Move this into its own component */ }
-              <div className="modal-review-buttons">
-                <FormButton
-                  type="submit"
-                  value="Submit Review"
-                />
-                <Button
-                  onClick={this.handleModalClose}
-                  text="Cancel"
-                />
-              </div>
-            </form>
-
+            <ReviewForm
+              onSubmit={this.handleSubmitReview}
+              onClose={this.handleModalClose}
+            />
           </Modal>
         </div>
       </div>
