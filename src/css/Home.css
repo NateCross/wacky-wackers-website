@@ -289,6 +289,15 @@
 
 .modal-review-container textarea {
   resize: none;
+  float: left;
+  width: 100%;
+  height: 100%;
+  /* min-width: 50%; */
+  min-height: 50%;
+  /* max-width: 100%; */
+  max-height: 100%;
+  overflow: auto;
+  margin-bottom: 1rem;
 }
 
 .modal-review-container label {
@@ -359,17 +368,21 @@
 }
 
 .modal-review-text-content-container {
-  flex-grow: 0;
-  flex-shrink: 1;
+  flex-grow: 1;
   flex-basis: auto;
+  flex-shrink: 1;
 }
 
 .modal-review-details-container {
   flex-grow: 2;
+  flex-basis: auto;
+  flex-shrink: 0;
 }
 
-.modal-review-field-container {
+.modal-review-field-container,
+.modal-review-star-rating-container {
   margin-bottom: 1rem;
+  width: 100%;
 }
 
 .review-rating-star {
@@ -389,6 +402,93 @@
 .rating-star-filled {
   opacity: 1;
   filter: drop-shadow(0px 0px 5px var(--yellow));
+}
+
+/* Hiring */
+
+.hiring {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.hiring-banner {
+  font-size: 7.5rem;
+  width: 80vw;
+  text-align: center;
+  text-transform: uppercase;
+
+  animation-name: hiring-banner-animation;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+
+  margin-bottom: 10rem;
+}
+
+@keyframes hiring-banner-animation {
+  0%, 100% {
+    text-shadow:
+      0px 0px 35px var(--magenta);
+  }
+
+  25% {
+    text-shadow:
+      0px 0px 5px var(--magenta);
+  }
+
+  45% {
+    text-shadow:
+      0px 0px 20px var(--magenta);
+  }
+
+  55% {
+    text-shadow:
+      0px 0px 5px var(--magenta);
+  }
+
+  75% {
+    text-shadow:
+      0px 0px 50px var(--magenta);
+  }
+}
+
+.hiring-diamond-outer {
+  background-color: transparent;
+  border-color: var(--magenta);
+  border-width: 0.2rem;
+  border-style: solid;
+  flex: 1;
+  padding: 25vmin;
+
+  transform: rotate(-45deg)
+    translate(calc(25% - 25vmin), calc(25% - 25vmin));
+
+  margin-left: 2.5rem;
+
+  box-shadow:
+    0px 0px 35px var(--magenta);
+}
+
+.hiring-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  gap: 2.5rem;
+
+  margin: 1rem;
+  margin-bottom: 10rem;
+}
+
+.hiring-image-container {
+  margin: 1rem;
+}
+
+.hiring-text-container {
+  color: var(--baby-blue);
+  text-shadow:
+    0px 0px 5px var(--baby-blue);
 }
 
 @media only screen and (max-width: 991px) {

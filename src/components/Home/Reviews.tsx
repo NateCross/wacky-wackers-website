@@ -61,11 +61,18 @@ function ReviewForm({ onClose, onSubmitClose }: ReviewFormType) {
   };
 
   const handleSubmitReview = async (e: FormEvent) => {
-    // TODO: Make review form
     e.preventDefault();
 
     // Easy way to get exclude the tempRating property
     const { tempRating, ...review } = reviewData;
+
+    for (const value of Object.values(review)) {
+      if (!value) {
+        // TODO: Insert error toast here
+        return;
+
+      }
+    }
 
     await fetch(ReviewsDbAddURL, {
       method: "POST",
@@ -144,7 +151,7 @@ function ReviewForm({ onClose, onSubmitClose }: ReviewFormType) {
             </label>
             <textarea
               id="modal-review-text"
-              cols={50}
+              cols={40}
               rows={10}
               onChange={(e) => handleFormFieldChange({ text: e.target.value })}
             />
