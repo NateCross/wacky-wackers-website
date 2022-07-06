@@ -2,6 +2,8 @@ import React from 'react'
 
 import { DiamondBox } from "../Diamond-Box";
 
+import HiringImg1 from "../../imgs/hiring stock image 1.jpg";
+
 const HiringDiamondStyles = {
   inner: "hiring-diamond-inner",
   outer: "hiring-diamond-outer",
@@ -18,8 +20,7 @@ export const Hiring = () => {
           <DiamondBox
             classes={HiringDiamondStyles}
           >
-            <p>Hi!</p>
-            <p>Hi again!</p>
+            <img src={HiringImg1} alt="" />
           </DiamondBox>
 
         </div>
