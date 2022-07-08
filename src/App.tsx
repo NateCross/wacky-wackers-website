@@ -9,6 +9,7 @@ import {
 import './css/App.css'
 
 import Header from "./views/Header";
+import Footer from "./views/Footer";
 
 import Home from './views/Home';
 import Product from './views/Product';
@@ -25,6 +26,8 @@ class App extends Component {
             <Route path="/products" element={<Product />}/>
           </Routes>
         </div>
+
+        <Footer />
       </>
     )
   }

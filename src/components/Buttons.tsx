@@ -21,6 +21,15 @@ interface FormButtonType {
   onClick?: MouseEventHandler,
 }
 
+interface LinkButtonType {
+  text: string,
+  href: string,
+  title?: string,
+  innerClassName?: string,
+  outerClassName?: string,
+  glowClassName?: string,
+}
+
 export const Button = ({
   text,
   innerClassName = "",

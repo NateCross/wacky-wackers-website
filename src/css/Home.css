@@ -423,7 +423,7 @@
   animation-duration: 10s;
   animation-iteration-count: infinite;
 
-  margin-bottom: 20rem;
+  margin-bottom: 10%;
 }
 
 @keyframes hiring-banner-animation {
@@ -481,7 +481,8 @@
   width: 100%;
   gap: 2.5rem;
 
-  margin-bottom: 10rem;
+  margin-top: 5%;
+  /* margin-bottom: 5%; */
 }
 
 .hiring-diamond-inner {
@@ -500,11 +501,13 @@
 }
 
 .hiring-image-container img {
-  object-fit: contain;
-  width: 225%;
-  height: 225%;
-  top: -62.5%;
-  left: -62.5%;
+  object-fit: cover;
+  width: 150%;
+  height: 150%;
+  top: -25%;
+  left: -25%;
+  /* top: -62.5%; */
+  /* left: -62.5%; */
   z-index: -1;
 
   position: absolute;
@@ -535,6 +538,40 @@
 
 .hiring-text-container h3 {
   font-size: 2.5vw;
+}
+
+.hiring div:nth-of-type(even) {
+  flex-direction: row-reverse;
+}
+
+.hiring-link {
+  margin-top: 10%;
+  margin-bottom: 10%;
+  text-decoration: none;
+}
+
+.hiring-button-glow {
+  width: 50vw;
+  height: 10vh;
+  filter: drop-shadow(0px 0px 20px var(--magenta));
+
+}
+
+.hiring-button-outer {
+  background-color: var(--magenta);
+  color: var(--magenta);
+}
+
+.hiring-button-inner {
+  font-size: 5vmin;
+  border-color: var(--magenta);
+  color: var(--magenta);
+  text-shadow:
+    0px 0px 5px var(--magenta);
+}
+
+.hiring-button-inner:hover {
+  background-color: var(--magenta);
 }
 
 @media only screen and (max-width: 991px) {
