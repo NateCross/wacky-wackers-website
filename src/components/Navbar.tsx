@@ -20,7 +20,7 @@ const LeftNavbar = (props: {}) => {
 
       <div className="nav-items">
         <ul>
-          <li><Link to="/products">Products</Link></li>
+          <li><Link to="/menu">Menu</Link></li>
           <li><Link to="/contact">Contact Us</Link></li>
           <li><Link to="/about">About The Company</Link></li>
           <li><Link to="/special-order">Make A Very Special Order</Link></li>

@@ -13,6 +13,7 @@ import Footer from "./views/Footer";
 
 import Home from './views/Home';
 import Product from './views/Product';
+import Menu from './views/Menu';
 
 class App extends Component {
   render() {
@@ -23,7 +24,7 @@ class App extends Component {
         <div id="content">
           <Routes>
             <Route path="/" element={<Home />}/>
-            <Route path="/products" element={<Product />}/>
+            <Route path="/menu" element={<Menu />}/>
           </Routes>
         </div>
 

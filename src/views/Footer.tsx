@@ -26,7 +26,7 @@ class Footer extends Component {
           </ul>
           <div className="footer-copyright">
             <p>
-              © 205 - 206 Wacky Wackers. All rights reserved.
+              © 205 - 206 Wacky Wackers Food and Services Inc. All rights reserved.
             </p>
           </div>
         </div>
