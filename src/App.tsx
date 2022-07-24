@@ -47,14 +47,26 @@ class App extends Component {
 
     const accountDetails = await response.json();
 
-    console.log(accountDetails);
+    this.setState({
+      ...this.state, user: accountDetails,
+    });
+  };
+
+  handleUserLogout = () => {
+    this.setState({
+      ...this.state, user: undefined,
+    });
   };
 
   render() {
+    const { user } = this.state;
+
     return (
       <>
         <Header
           onLogin={this.handleUserLogin}
+          onLogout={this.handleUserLogout}
+          user={user}
         />
 
         <div id="content">

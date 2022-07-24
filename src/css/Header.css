@@ -119,6 +119,24 @@ header a {
   outline-color: var(--yellow);
 }
 
+.modal-logout-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.modal-logout-body p {
+  margin-bottom: 2rem;
+}
+
+.modal-logout-buttons-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
 .nav-hamburger {
 }
 

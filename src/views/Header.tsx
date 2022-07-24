@@ -3,9 +3,12 @@ import { Link } from 'react-router-dom';
 import '../css/Header.css';
 
 import { LeftNavbar, RightNavbar } from '../components/Navbar';
+import User from '../types/User';
 
 export interface HeaderProps {
   onLogin: Function,
+  onLogout: Function,
+  user: User | undefined,
   // onRegister: Function,
 };
 
@@ -24,7 +27,9 @@ const Header = (props: HeaderProps) => {
       <LeftNavbar />
       <Logo />
       <RightNavbar
+        onLogout={props.onLogout}
         onLogin={props.onLogin}
+        user={props.user}
       />
     </header>
   );

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 import { Modal } from "../components/Modal";
 import { Button, FormButton } from "../components/Buttons";
+import User from '../types/User';
 
 const DbLoginUrl = "http://localhost:5000/login";
 
@@ -14,6 +15,8 @@ function handleNavClick() {
 
 interface RightNavbarProps {
   onLogin: Function,
+  onLogout: Function,
+  user: User | undefined,
 };
 
 interface LoginFormProps {
@@ -31,12 +34,22 @@ const ModalHeader = {
   className: "modal-login-header",
 };
 
+const LogoutModalHeader = {
+  text: "Logout",
+  className: "modal-logout-header",
+};
+
 const ModalBody = {
   text: "",
   className: "modal-login-body",
 };
 
-const LeftNavbar = (props: {}) => {
+const LogoutModalBody = {
+  text: "Are you sure you wish to logout?",
+  className: "modal-logout-body",
+};
+
+const LeftNavbar = () => {
   return (
     <nav>
       <button
@@ -77,7 +90,6 @@ function LoginForm({ onClose, onLogin }: LoginFormProps) {
     let loginReturnVal;
     try {
       loginReturnVal = await onLogin(loginData);
-      console.log(loginReturnVal);
 
       onClose();
     } catch (err) {
@@ -131,19 +143,45 @@ function LoginForm({ onClose, onLogin }: LoginFormProps) {
   );
 }
 
-const RightNavbar = ({ onLogin, }: RightNavbarProps) => {
+const RightNavbar = ({ onLogin, user, onLogout }: RightNavbarProps) => {
   const [modalIsVisible, setModalIsVisible] = useState(false);
+  const [logoutModalIsVisible, setLogoutModalIsVisible] = useState(false);
 
   const toggleLoginModal = () => {
     setModalIsVisible(modalIsVisible ? false : true);
   };
 
+  const toggleLogoutModal = () => {
+    setLogoutModalIsVisible(logoutModalIsVisible ? false : true);
+  }
+
+  const displayLoginButton = () => {
+    if (!user?.email)
+      return (
+        <Button
+          onClick={toggleLoginModal}
+          text="Login"
+        />
+      );
+    else {
+      return (
+        <Button
+          onClick={toggleLogoutModal}
+          text="Logout"
+        />
+      );
+    }
+  };
+
+  const handleLogout = () => {
+    onLogout();
+    toggleLogoutModal();
+  }
+
+
   return (
     <>
-      <Button
-        onClick={toggleLoginModal}
-        text="Login"
-      />
+      { displayLoginButton() }
       <div className="login-modal">
         <Modal
           isVisible={modalIsVisible}
@@ -156,6 +194,26 @@ const RightNavbar = ({ onLogin, }: RightNavbarProps) => {
             onClose={toggleLoginModal}
             onLogin={onLogin}
           />
+        </Modal>
+      </div>
+      <div className="logout-modal">
+        <Modal
+          isVisible={logoutModalIsVisible}
+          header={LogoutModalHeader}
+          body={LogoutModalBody}
+          onClose={toggleLogoutModal}
+          containerClassName="modal-logout-container"
+        >
+          <div className="modal-logout-buttons-container">
+            <Button
+              text="Logout"
+              onClick={handleLogout}
+            />
+            <Button
+              text="Cancel"
+              onClick={toggleLogoutModal}
+            />
+          </div>
         </Modal>
       </div>
     </>
