@@ -56,8 +56,73 @@ header a {
   color: inherit;
 }
 
+.modal-login-fields {
+  display: flex;
+  justify-content: center;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  gap: 2rem;
+}
+
+.modal-login-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 1.5rem;
+}
+
+.modal-login-text-content-container {
+  /* flex-grow: 1; */
+  /* flex-basis: auto; */
+  /* flex-shrink: 1; */
+}
+
+.modal-login-field-container {
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.modal-login-field-container label {
+  display: block;
+  margin-bottom: 0.5rem;
+  margin-left: 0;
+  color: var(--yellow);
+  font-weight: 900;
+  text-shadow:
+    0px 0px 5px var(--yellow);
+}
+
+.modal-login-field-container input {
+  border-radius: 2rem;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: var(--baby-blue);
+  font-family: "Consolaa", sans-serif;
+  padding: 0.5rem 1rem;
+  border-color: var(--baby-blue);
+
+  transition: all 0.5s ease-in-out;
+
+  box-shadow:
+    0px 0px 5px var(--baby-blue);
+
+  text-shadow:
+    0px 0px 5px var(--baby-blue);
+}
+
+.modal-login-field-container input:hover,
+.modal-login-field-container input:focus {
+  box-shadow:
+    0px 0px 10px var(--baby-blue);
+  filter: opacity(1.5);
+
+  outline-color: var(--yellow);
+}
+
 .nav-hamburger {
 }
+
+
 
 /* MEDIA QUERIES */
 /* Breakpoints from here: https://stackoverflow.com/a/24664378 */

@@ -5,6 +5,7 @@ import "dotenv/config";
 import routeRecord from "./routes/products.js";
 import routeCarousel from "./routes/carousel.js";
 import routeReviews from "./routes/reviews.js";
+import routeUsers from "./routes/users.js";
 import dbConn from "./db/conn.js";
 
 
@@ -14,9 +15,11 @@ const port = process.env?.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(routeRecord);
 app.use(routeCarousel);
 app.use(routeReviews);
+app.use(routeUsers);
 
 app.listen(port, () => {
   dbConn.connectToServer((err: Function) => {

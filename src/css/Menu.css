@@ -62,8 +62,14 @@
 }
 
 .honeycomb-cell::before {
-  background-color: white;
+  background-color: var(--baby-blue);
   transform: scale(1.055);
+
+  transition: background-color 0.25s ease-in-out;
+}
+
+.honeycomb-cell:hover::before {
+  background-color: var(--magenta);
 }
 
 .honeycomb-cell::after {
@@ -78,7 +84,6 @@
   margin-top: 0;
   margin-bottom: 0;
 }
-
 
 .honeycomb-image {
   object-fit: cover;

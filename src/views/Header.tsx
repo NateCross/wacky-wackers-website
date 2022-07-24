@@ -4,6 +4,11 @@ import '../css/Header.css';
 
 import { LeftNavbar, RightNavbar } from '../components/Navbar';
 
+export interface HeaderProps {
+  onLogin: Function,
+  // onRegister: Function,
+};
+
 function Logo (props: {}) {
   return (
     <Link to="/" title="Wacky Wackers">
@@ -13,12 +18,14 @@ function Logo (props: {}) {
   );
 }
 
-const Header = (props: {}) => {
+const Header = (props: HeaderProps) => {
   return (
     <header>
       <LeftNavbar />
       <Logo />
-      <RightNavbar />
+      <RightNavbar
+        onLogin={props.onLogin}
+      />
     </header>
   );
 };

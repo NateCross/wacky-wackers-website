@@ -56,15 +56,6 @@ export default class Menu extends Component {
     // the values are to be arrays of that category
     // from the menuItems.
 
-    // const menuElements: MenuElements = {};
-    // menuItems.forEach((value: ProductType, index) => {
-    //   const category = value.category || "";
-    //   menuElements[category] = menuElements[category] || [];
-    //
-    //   menuElements[category].push(value);
-    // });
-    // console.log(menuElements);
-
     const menuElements = menuItems.reduce<MenuElements>((prev, current: ProductType) => {
       const category = current.category || "";
       prev[category] = prev[category] || [];
@@ -82,17 +73,16 @@ export default class Menu extends Component {
                 <h2 className="menu-section-header">{value}</h2>
                 <hr />
                 <ul className="menu-section-container">
-                  {
-                    menuElements[value].map((val, ind) => {
-                      return (
-                        <Honeycomb
-                          product={val}
-                          key={ind}
-                        />
-                      )
-                    })
-                  }
-
+                {
+                  menuElements[value].map((val, ind) => {
+                    return (
+                      <Honeycomb
+                        product={val}
+                        key={ind}
+                      />
+                    );
+                  })
+                }
                 </ul>
                 { /* Insert honeycomb component here */ }
               </section>

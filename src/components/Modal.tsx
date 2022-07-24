@@ -19,6 +19,12 @@ interface ModalType {
   containerClassName?: string,
 };
 
+enum ModalPart {
+  header = "header",
+  body = "body",
+  footer = "footer",
+}
+
 export const Modal = ({
   header = {},
   body,

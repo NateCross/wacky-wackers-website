@@ -60,7 +60,7 @@ export const FormButton = ({
   innerClassName = "",
   outerClassName = "",
   glowClassName = "",
-  onClick = () => {},
+  onClick = () => { },
   type,
   value = "",
 }: FormButtonType) => {
