@@ -14,6 +14,7 @@ import Footer from "./views/Footer";
 import Home from './views/Home';
 import Product from './views/Product';
 import Menu from './views/Menu';
+import UserPage from "./views/User";
 
 import User from "./types/User";
 
@@ -73,6 +74,7 @@ class App extends Component {
           <Routes>
             <Route path="/" element={<Home />}/>
             <Route path="/menu" element={<Menu />}/>
+            <Route path="/user" element={<UserPage />} />
           </Routes>
         </div>
 

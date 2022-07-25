@@ -64,7 +64,7 @@ UsersRoutes.route("/login").post(async (req, res) => {
 
     // We do this to "throw away" the password and ID so it does not get sent
     // to the client
-    const { password: _, _id: __, ...accountDetails } = { ...loggedInUser };
+    const { password: _, ...accountDetails } = { ...loggedInUser };
 
     return res.json(accountDetails);
 

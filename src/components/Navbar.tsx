@@ -178,10 +178,23 @@ const RightNavbar = ({ onLogin, user, onLogout }: RightNavbarProps) => {
     toggleLogoutModal();
   }
 
+  const displayUserSettings = () => {
+    if (!user?._id) return undefined;
+
+    return (
+      <div className="user-settings">
+        <h3>Hello, {user?.name}</h3>
+        <Link to="/user">Settings</Link>
+      </div>
+    );
+
+  };
+
 
   return (
     <>
       { displayLoginButton() }
+      { displayUserSettings() }
       <div className="login-modal">
         <Modal
           isVisible={modalIsVisible}
